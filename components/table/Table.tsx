@@ -24,7 +24,7 @@ export default function Table() {
     const tasksWithUpdatedOrder = updatedTasks.map((task, index) => ({
       ...task,
       order: index + 1,
-    }));
+    })).sort((a,b) => (a.order - b.order));
 
     try {
       await updateOrder(tasksWithUpdatedOrder);

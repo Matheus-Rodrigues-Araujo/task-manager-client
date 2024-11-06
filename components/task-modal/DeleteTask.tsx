@@ -2,7 +2,7 @@
 import { useModal } from "@/context/ModalContext";
 import { useTasks } from "@/context/TaskContext";
 import { deleteTask } from "@/services/task-service";
-import { handleError } from "@/services/task-service";
+
 export default function DeleteTask({ id }: { id: number }) {
   const { closeModal } = useModal();
   const { setTasks } = useTasks()

@@ -1,10 +1,9 @@
 "use client";
 
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import { useModal } from "@/context/ModalContext";
 import { useTasks } from "@/context/TaskContext";
-import { createTask, handleError } from "@/services/task-service";
-import { AxiosError } from "axios";
+import { createTask } from "@/services/task-service";
 
 type TaskState = {
   name: string;

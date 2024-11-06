@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+tr {
+  border: 0.5px solid #b4aaaa;
+}
+td {
+  text-align: center;
+  padding-block: 5px;
+}
+
+.drag-over {
+  background-color: #0c7dffc2;
+}
+
+input {
+  outline: 1px solid #b4aaaa;
+  height: 30px;
+  border-radius: 0.275rem;
+  padding: 5px;
+}

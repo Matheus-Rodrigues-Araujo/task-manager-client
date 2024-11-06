@@ -1,0 +1,81 @@
+import { TaskProps } from "@/types";
+
+export const tasks: TaskProps[] = [
+  {
+    id: 1,
+    name: "Concluir relatório financeiro",
+    price: 100.0,
+    deadline: "2024-11-05",
+    order: 1,
+  },
+  {
+    id: 2,
+    name: "Reunião com equipe de marketing",
+    price: 430.0,
+    deadline: "2024-11-07",
+    order: 1,
+  },
+  {
+    id: 3,
+    name: "Revisão do design do site",
+    price: 300.59,
+    deadline: "2024-11-12",
+    order: 1,
+  },
+  {
+    id: 4,
+    name: "Atualizar software de CRM",
+    price: 2000,
+    deadline: "2024-11-15",
+    order: 1,
+  },
+  {
+    id: 5,
+    name: "Treinamento de novos funcionários",
+    price: 500,
+    deadline: "2024-11-20",
+    order: 1,
+  },
+  {
+    id: 6,
+    name: "Reunião com equipe de marketing",
+    price: 430.0,
+    deadline: "2024-11-07",
+    order: 1,
+  },
+  {
+    id: 7,
+    name: "Reunião com equipe de marketing",
+    price: 430.0,
+    deadline: "2024-11-07",
+    order: 1,
+  },
+  {
+    id: 8,
+    name: "Reunião com equipe de marketing",
+    price: 430.0,
+    deadline: "2024-11-07",
+    order: 1,
+  },
+  {
+    id: 9,
+    name: "Reunião com equipe de marketing",
+    price: 430.0,
+    deadline: "2024-11-07",
+    order: 1,
+  },
+  {
+    id: 10,
+    name: "Reunião com equipe de marketing",
+    price: 430.0,
+    deadline: "2024-11-07",
+    order: 1,
+  },
+  {
+    id: 11,
+    name: "Reunião com equipe de marketing",
+    price: 430.0,
+    deadline: "2024-11-07",
+    order: 1,
+  },
+];

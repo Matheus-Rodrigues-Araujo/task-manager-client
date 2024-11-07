@@ -1,0 +1,18 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.production
+    networks:
+      - task-network
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+networks:
+  task-network:
+    driver: bridge

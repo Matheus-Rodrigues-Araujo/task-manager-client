@@ -1,9 +1,10 @@
 "use client";
 
 import { useReducer } from "react";
-import { useModal } from "@/context/ModalContext";
+import { useModal } from "@/contexts/ModalContext";
 import { updateTask } from "@/services/task-service";
 import { TaskProps } from "@/types";
+import { useTheme } from "@/contexts/ThemeContext";
 
 type EditTaskProps = {
   data: TaskProps;
@@ -43,6 +44,8 @@ export default function EditTask({ data }: EditTaskProps) {
   });
 
   const { closeModal } = useModal();
+  const { isDarkMode } = useTheme();
+
   const handleEditSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -64,7 +67,7 @@ export default function EditTask({ data }: EditTaskProps) {
   return (
     <form
       onSubmit={handleEditSubmit}
-      className="bg-white w-full h-3/6 max-w-xl z-50 p-5 rounded-md flex flex-col gap-2"
+      className={`${isDarkMode ? 'bg-dark' : 'bg-white'} modal`}
     >
       <h2 className="text-2xl text-blue font-bold">Editar tarefa</h2>
       <label className="grid gap-2" htmlFor="name">

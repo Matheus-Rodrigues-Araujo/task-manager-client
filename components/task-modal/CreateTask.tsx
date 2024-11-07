@@ -1,9 +1,10 @@
 "use client";
 
 import { useReducer } from "react";
-import { useModal } from "@/context/ModalContext";
-import { useTasks } from "@/context/TaskContext";
+import { useModal } from "@/contexts/ModalContext";
+import { useTasks } from "@/contexts/TaskContext";
 import { createTask } from "@/services/task-service";
+import { useTheme } from "@/contexts/ThemeContext";
 
 type TaskState = {
   name: string;
@@ -42,7 +43,8 @@ export default function CreateTask() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { setTasks } = useTasks();
   const { closeModal } = useModal();
-
+  const { isDarkMode } = useTheme();
+  
   const handleCreateSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -69,7 +71,7 @@ export default function CreateTask() {
     <>
       <form
         onSubmit={handleCreateSubmit}
-        className="bg-white w-full h-3/6 max-w-xl z-50 p-5 rounded-md flex flex-col gap-2"
+        className={`${isDarkMode ? 'bg-dark' : 'bg-white'} modal`}
       >
         <h2 className="text-2xl text-blue font-bold">Criar Nova Tarefa</h2>
         <label className="grid gap-2" htmlFor="name">

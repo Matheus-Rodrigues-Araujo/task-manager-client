@@ -3,21 +3,24 @@
 import Table from "../components/table/Table";
 import TaskModal from "../components/task-modal/TaskModal";
 import { NewTaskBtn } from "@/components";
-import { TasksProvider } from "@/context/TaskContext";
-import { ModalProvider } from "@/context/ModalContext";
+import Header from "./Header";
+import { TasksProvider } from "@/contexts/TaskContext";
+import { ModalProvider } from "@/contexts/ModalContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 export default function Main() {
   return (
-    <TasksProvider>
-      <ModalProvider>
-        <main className="min-h-screen p-6">
-          <div className="max-w-[1400px] mx-auto mb-10">
+    <ThemeProvider>
+      <TasksProvider>
+        <ModalProvider>
+          <Header/>
+          <main className="w-full relative">
             <Table />
             <NewTaskBtn />
             <TaskModal />
-          </div>
-        </main>
-      </ModalProvider>
-    </TasksProvider>
+          </main>
+        </ModalProvider>
+      </TasksProvider>
+    </ThemeProvider>
   );
 }

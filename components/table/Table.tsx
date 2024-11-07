@@ -6,10 +6,12 @@ import TableRow from "./TableRow";
 import { handleDragOver, restartHover } from "@/components/table/tableUtils";
 import { updateOrder } from "@/services/task-service";
 import { TaskProps } from "@/types";
-import { useTasks } from "@/context/TaskContext";
+import { useTasks } from "@/contexts/TaskContext";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Table() {
   const { tasks, setTasks } = useTasks();
+  const { isDarkMode } = useTheme();
 
   const [draggedRowItem, setDraggedRowItem] = useState<number | null>(null);
   const [hoveredRowItem, setHoveredRowItem] = useState<number | null>(null);
@@ -21,10 +23,12 @@ export default function Table() {
     const [removed] = updatedTasks.splice(draggedRowItem, 1);
     updatedTasks.splice(hoveredIndex, 0, removed);
 
-    const tasksWithUpdatedOrder = updatedTasks.map((task, index) => ({
-      ...task,
-      order: index + 1,
-    })).sort((a,b) => (a.order - b.order));
+    const tasksWithUpdatedOrder = updatedTasks
+      .map((task, index) => ({
+        ...task,
+        order: index + 1,
+      }))
+      .sort((a, b) => a.order - b.order);
 
     try {
       await updateOrder(tasksWithUpdatedOrder);
@@ -44,7 +48,13 @@ export default function Table() {
       </div>
       <table className="w-full">
         <thead className="font-semibold text-xl">
-          <tr>
+          <tr
+            className={`${
+              isDarkMode
+                ? "border-none text-white"
+                : "border-[0.5px] border-gray border-y-[0px]"
+            }`}
+          >
             <td>#ID</td>
             <td>NOME</td>
             <td>PREÇO</td>

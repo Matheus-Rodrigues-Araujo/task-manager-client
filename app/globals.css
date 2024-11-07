@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-tr {
-  border: 0.5px solid #b4aaaa;
+*{
+  transition: .2s ease-in-out;
 }
+
 td {
   text-align: center;
   padding-block: 5px;
@@ -19,4 +20,10 @@ input {
   height: 30px;
   border-radius: 0.275rem;
   padding: 5px;
+}
+
+@layer components {
+  .modal{
+    @apply w-full h-3/6 max-w-xl z-50 p-5 rounded-md flex flex-col gap-2;
+  }
 }

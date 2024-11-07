@@ -9,7 +9,6 @@ import {
 } from "react";
 import { TaskProps } from "@/types";
 import { findAll, handleError } from "@/services/task-service";
-import { AxiosError } from "axios";
 
 type TaskContextProps = {
   tasks: TaskProps[];
@@ -22,7 +21,6 @@ export const TaskContext = createContext<TaskContextProps | undefined>(
 
 export function TasksProvider({ children }: { children: ReactNode }) {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
-  const [message, setMessage] = useState<string>("");
   useEffect(() => {
     refreshTasks();
   }, [tasks]);
@@ -32,7 +30,7 @@ export function TasksProvider({ children }: { children: ReactNode }) {
       const result = await findAll();
       setTasks(result);
     } catch (error) {
-      setMessage(error as string);
+      throw handleError(error)
     }
   };
 

@@ -67,11 +67,11 @@ export default function EditTask({ data }: EditTaskProps) {
   return (
     <form
       onSubmit={handleEditSubmit}
-      className={`${theme === "dark" ? 'bg-dark' : 'bg-white'} modal`}
+      className={`${theme === "dark" ? "bg-dark" : "bg-white"} modal`}
     >
       <h2 className="text-2xl text-blue font-bold">Editar tarefa</h2>
-      <label className={`grid gap-2 ${theme === "dark" ? "text-white" : "text-dark"}`} htmlFor="name">
-        Nome
+      <div className="grid gap-2">
+        <label htmlFor="name">Nome</label>
         <input
           type="text"
           name="name"
@@ -82,9 +82,9 @@ export default function EditTask({ data }: EditTaskProps) {
             dispatch({ type: "SET_NAME", payload: e.target.value })
           }
         />
-      </label>
-      <label className={`grid gap-2 ${theme === "dark" ? "text-white" : "text-dark"}`} htmlFor="price">
-        Custo
+      </div>
+      <div className="grid gap-2">
+        <label htmlFor="price">Custo</label>
         <input
           type="number"
           name="price"
@@ -95,9 +95,9 @@ export default function EditTask({ data }: EditTaskProps) {
             dispatch({ type: "SET_PRICE", payload: Number(e.target.value) })
           }
         />
-      </label>
-      <label className={`grid gap-2 ${theme === "dark" ? "text-white" : "text-dark"}`} htmlFor="deadline">
-        Data Limite
+      </div>
+      <div className="grid gap-2">
+        <label htmlFor="deadline">Data Limite</label>
         <input
           type="date"
           name="deadline"
@@ -114,7 +114,7 @@ export default function EditTask({ data }: EditTaskProps) {
             })
           }
         />
-      </label>
+      </div>
       <div className="flex w-full justify-end items-center gap-2">
         <button
           onClick={closeModal}

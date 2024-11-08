@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  transition: .2s ease-in-out;
+* {
+  transition: 0.2s ease-in-out;
 }
 
 td {
@@ -22,8 +22,12 @@ input {
   padding: 5px;
 }
 
+html.bg-dark label {
+  color: white;
+}
+
 @layer components {
-  .modal{
+  .modal {
     @apply w-full h-3/6 max-w-xl z-50 p-5 rounded-md flex flex-col gap-2;
   }
 }

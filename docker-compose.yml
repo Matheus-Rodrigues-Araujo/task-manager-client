@@ -1,6 +1,6 @@
 services:
-  frontend:
-    container_name: frontend
+  task-frontend:
+    container_name: task-frontend
     build:
       context: .
       dockerfile: Dockerfile.production
@@ -16,3 +16,4 @@ services:
 networks:
   task-network:
     driver: bridge
+    external: true

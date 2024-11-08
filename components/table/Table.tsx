@@ -68,7 +68,7 @@ export default function Table() {
               .sort((a, b) => a.order - b.order)
               .map((row: TaskProps, index) => (
                 <TableRow
-                  key={row.id}
+                  key={index}
                   row={row}
                   index={index}
                   onDragStart={() => setDraggedRowItem(index)}

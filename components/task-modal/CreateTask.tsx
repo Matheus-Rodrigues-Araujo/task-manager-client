@@ -43,8 +43,8 @@ export default function CreateTask() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { setTasks } = useTasks();
   const { closeModal } = useModal();
-  const { isDarkMode } = useTheme();
-  
+  const { theme } = useTheme();
+
   const handleCreateSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -71,10 +71,10 @@ export default function CreateTask() {
     <>
       <form
         onSubmit={handleCreateSubmit}
-        className={`${isDarkMode ? 'bg-dark' : 'bg-white'} modal`}
+        className={`${theme === "dark" ? "bg-dark" : "bg-white"} modal`}
       >
         <h2 className="text-2xl text-blue font-bold">Criar Nova Tarefa</h2>
-        <label className="grid gap-2" htmlFor="name">
+        <label className={`grid gap-2 ${theme === "dark" ? "text-white" : "text-dark"}`} htmlFor="name">
           Nome
           <input
             type="text"
@@ -87,7 +87,7 @@ export default function CreateTask() {
             }
           />
         </label>
-        <label className="grid gap-2" htmlFor="price">
+        <label className={`grid gap-2 ${theme === "dark" ? "text-white" : "text-dark"}`} htmlFor="price">
           Custo
           <input
             type="number"
@@ -100,7 +100,7 @@ export default function CreateTask() {
             }
           />
         </label>
-        <label className="grid gap-2" htmlFor="deadline">
+        <label className={`grid gap-2 ${theme === "dark" ? "text-white" : "text-dark"}`} htmlFor="deadline">
           Data Limite
           <input
             type="date"

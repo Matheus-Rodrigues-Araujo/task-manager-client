@@ -6,8 +6,8 @@ import { deleteTask } from "@/services/task-service";
 
 export default function DeleteTask({ id }: { id: number }) {
   const { closeModal } = useModal();
-  const { setTasks } = useTasks()
-  const { isDarkMode } = useTheme();
+  const { setTasks } = useTasks();
+  const { theme } = useTheme();
 
   const handleDeleteSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,17 +16,19 @@ export default function DeleteTask({ id }: { id: number }) {
       setTasks((prev) => prev.filter((task) => task.id !== id));
       closeModal();
     } catch (error) {
-      alert(error)
+      alert(error);
     }
   };
 
   return (
     <form
       onSubmit={handleDeleteSubmit}
-      className={`${isDarkMode ? 'bg-dark' : 'bg-white'} modal`}
-      >
+      className={`${theme === "dark" ? "bg-dark" : "bg-white"} modal`}
+    >
       <h2 className="text-2xl text-blue font-bold">Deletar Tarefa</h2>
-      <p className="text-lg font-normal">Deseja deletar a tarefa?</p>
+      <p className={`${theme === "dark" ? "text-white" : "text-dark"} modal text-lg font-normal`}>
+        Deseja prosseguir com ação?
+      </p>
       <div className="flex w-full justify-end items-center gap-2">
         <button
           onClick={closeModal}

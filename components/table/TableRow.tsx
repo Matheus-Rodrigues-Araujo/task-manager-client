@@ -19,7 +19,7 @@ export default function TableRow({
 }: TableRowProps) {
   const { id, name, price, endDate } = row;
   const { openModal } = useModal();
-  const { isDarkMode } = useTheme();
+  const { theme } = useTheme();
   const parsedDate = new Date(endDate);
   const dateFormat = `${String(parsedDate.getDate() + 1).padStart(
     2,
@@ -39,14 +39,12 @@ export default function TableRow({
         onDragEnd={onDragEnd}
         key={index}
         id={index.toString()}
-        className={`cursor-move
-          border-[0.5px] border-gray
-          ${isDarkMode && price <= 1000 && "text-white"} 
+        className={`cursor-move border-[0.5px] 
+          ${theme === "dark" ? "text-white" : "text-black"}
           ${isDragged ? "bg-light-blue" : ""} 
           ${isHovered ? "bg-green-300" : ""}
-          ${price >= 1000 ? "bg-yellow" : ""} 
-          ${price >= 1000 && isDarkMode ? "bg-yellow text-black" : ""}
-          `}
+          ${price >= 1000 ? `bg-yellow text-dark` : "bg-none"}
+        `}
       >
         <td>{id}</td>
         <td>{name}</td>

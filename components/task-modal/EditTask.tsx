@@ -44,7 +44,7 @@ export default function EditTask({ data }: EditTaskProps) {
   });
 
   const { closeModal } = useModal();
-  const { isDarkMode } = useTheme();
+  const { theme } = useTheme();
 
   const handleEditSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,10 +67,10 @@ export default function EditTask({ data }: EditTaskProps) {
   return (
     <form
       onSubmit={handleEditSubmit}
-      className={`${isDarkMode ? 'bg-dark' : 'bg-white'} modal`}
+      className={`${theme === "dark" ? 'bg-dark' : 'bg-white'} modal`}
     >
       <h2 className="text-2xl text-blue font-bold">Editar tarefa</h2>
-      <label className="grid gap-2" htmlFor="name">
+      <label className={`grid gap-2 ${theme === "dark" ? "text-white" : "text-dark"}`} htmlFor="name">
         Nome
         <input
           type="text"
@@ -83,7 +83,7 @@ export default function EditTask({ data }: EditTaskProps) {
           }
         />
       </label>
-      <label className="grid gap-2" htmlFor="price">
+      <label className={`grid gap-2 ${theme === "dark" ? "text-white" : "text-dark"}`} htmlFor="price">
         Custo
         <input
           type="number"
@@ -96,7 +96,7 @@ export default function EditTask({ data }: EditTaskProps) {
           }
         />
       </label>
-      <label className="grid gap-2" htmlFor="deadline">
+      <label className={`grid gap-2 ${theme === "dark" ? "text-white" : "text-dark"}`} htmlFor="deadline">
         Data Limite
         <input
           type="date"

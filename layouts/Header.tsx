@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 export default function Header() {
-  const { isDarkMode, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <header className="flex justify-between items-center p-4">
@@ -17,16 +17,16 @@ export default function Header() {
       >
         <span
           className={`absolute left-1 w-6 h-6 bg-blue rounded-full shadow-md transition-transform duration-300 transform
-            ${isDarkMode ? "translate-x-8" : "translate-x-0"}`}
+            ${theme === "dark" ? "translate-x-8" : "translate-x-0"}`}
         />
         <span
           className={`absolute left-2 ${
-            isDarkMode ? "text-blue" : "text-white"
+            theme === "dark" ? "text-blue" : "text-white"
           }`}
         >
           <FaSun />
         </span>
-        <span className={`absolute right-2 ${isDarkMode && "text-white"}`}>
+        <span className={`absolute right-2 ${theme === "dark" ? "text-white" : ""}`}>
           <FaMoon />
         </span>
       </div>

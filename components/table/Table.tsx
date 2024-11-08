@@ -11,7 +11,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 export default function Table() {
   const { tasks, setTasks } = useTasks();
-  const { isDarkMode } = useTheme();
+  const { theme } = useTheme();
 
   const [draggedRowItem, setDraggedRowItem] = useState<number | null>(null);
   const [hoveredRowItem, setHoveredRowItem] = useState<number | null>(null);
@@ -50,9 +50,9 @@ export default function Table() {
         <thead className="font-semibold text-xl">
           <tr
             className={`${
-              isDarkMode
-                ? "border-none text-white"
-                : "border-[0.5px] border-gray border-y-[0px]"
+              theme === "dark"
+                ? "outline-1 outline outline-white text-white"
+                : "border-[0.5px] border-gray border-y-[0.5px]"
             }`}
           >
             <td>#ID</td>

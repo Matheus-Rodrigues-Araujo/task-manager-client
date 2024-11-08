@@ -46,43 +46,36 @@ export default function Table() {
       <div className="bg-blue p-3 rounded-t-md">
         <h1 className="text-white text-3xl">Tarefas</h1>
       </div>
-      <table className="w-full">
-        <thead className="font-semibold text-xl">
-          <tr
-            className={`${
-              theme === "dark"
-                ? "outline-1 outline outline-white text-white"
-                : "border-[0.5px] border-gray border-y-[0.5px]"
-            }`}
-          >
-            <td>#ID</td>
-            <td>NOME</td>
-            <td>PREÇO</td>
-            <td>PRAZO</td>
-            <td>AÇÕES</td>
-          </tr>
-        </thead>
-        <tbody>
-          {tasks &&
-            tasks
-              .sort((a, b) => a.order - b.order)
-              .map((row: TaskProps, index) => (
-                <TableRow
-                  key={index}
-                  row={row}
-                  index={index}
-                  onDragStart={() => setDraggedRowItem(index)}
-                  onDragOver={(e) =>
-                    handleDragOver(e, setHoveredRowItem, index)
-                  }
-                  onDrop={() => handleDrop(index)}
-                  onDragEnd={() => restartHover(setHoveredRowItem)}
-                  isDragged={index === draggedRowItem}
-                  isHovered={index === hoveredRowItem}
-                />
-              ))}
-        </tbody>
-      </table>
+      <div className="overflow-x-scroll">
+      <table className="w-full table-auto">
+  <thead className="font-semibold text-xl">
+    <tr className={`${
+      theme === "dark" ? "outline-1 outline outline-white text-white" : "border-[0.5px] border-gray border-y-[0.5px]"
+    }`}>
+      <th className="px-2 py-1">#ID</th>
+      <th className="px-2 py-1 ">NOME</th>
+      <th className="px-2 py-1">PREÇO</th>
+      <th className="px-2 py-1 ">PRAZO</th>
+      <th className="px-2 py-1">AÇÕES</th>
+    </tr>
+  </thead>
+  <tbody>
+    {tasks && tasks.sort((a, b) => a.order - b.order).map((row: TaskProps, index) => (
+      <TableRow
+        key={index}
+        row={row}
+        index={index}
+        onDragStart={() => setDraggedRowItem(index)}
+        onDragOver={(e) => handleDragOver(e, setHoveredRowItem, index)}
+        onDrop={() => handleDrop(index)}
+        onDragEnd={() => restartHover(setHoveredRowItem)}
+        isDragged={index === draggedRowItem}
+        isHovered={index === hoveredRowItem}
+      />
+    ))}
+  </tbody>
+</table>
+      </div>
     </>
   );
 }

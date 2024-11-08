@@ -31,3 +31,23 @@ html.bg-dark label {
     @apply w-full h-3/6 max-w-xl z-50 p-5 rounded-md flex flex-col gap-2;
   }
 }
+
+@media (max-width: 768px) {
+  table {
+    border-collapse: collapse; 
+  }
+  td, th {
+    padding: 8px;
+    text-align: left;
+    display: block;
+  }
+  td {
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    display: none;
+  }
+  td:nth-child(1), td:nth-child(2) {
+    display: block;
+  }
+}

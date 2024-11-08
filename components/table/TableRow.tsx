@@ -40,16 +40,16 @@ export default function TableRow({
         key={index}
         id={index.toString()}
         className={`cursor-move border-[0.5px] 
-          ${theme === "dark" ? "text-white" : "text-black"}
+          ${theme === "dark" && price < 1000 ? "text-white" : "text-black"}
           ${isDragged ? "bg-light-blue" : ""} 
           ${isHovered ? "bg-green-300" : ""}
-          ${price >= 1000 ? `bg-yellow text-dark` : "bg-none"}
+          ${price >= 1000 && "bg-yellow text-dark"}
         `}
       >
-        <td>{id}</td>
-        <td>{name}</td>
-        <td>R$ {price.toString().replace(".", ",")}</td>
-        <td>{dateFormat}</td>
+        <td data-label="#ID">{id}</td>
+        <td data-label="NOME">{name}</td>
+        <td data-label="PREÇO">R$ {price.toString().replace(".", ",")}</td>
+        <td data-label="PRAZO">{dateFormat}</td>
         <td className="flex justify-center items-center gap-2">
           <button
             onClick={() => openModal(<EditTask data={row} />)}
